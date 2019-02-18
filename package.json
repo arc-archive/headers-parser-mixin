@@ -1,5 +1,5 @@
 {
-  "description": "Headers parser Polymer Mixin to be impplemented with elements that needs to parse headers data",
+  "description": "Headers parser Polymer Mixin to be implemented to elements that needs to parse headers data",
   "keywords": [
     "web-components",
     "polymer",
