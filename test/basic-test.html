@@ -6,11 +6,11 @@
 
     <title>headers-parser-mixin test</title>
 
-    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../node_modules/@polymer/test-fixture/test-fixture.js"></script>
-    <script src="../node_modules/mocha/mocha.js"></script>
-    <script src="../node_modules/chai/chai.js"></script>
-    <script src="../node_modules/wct-mocha/wct-mocha.js"></script>
+    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../@polymer/test-fixture/test-fixture.js"></script>
+    <script src="../../../mocha/mocha.js"></script>
+    <script src="../../../chai/chai.js"></script>
+    <script src="../../../wct-mocha/wct-mocha.js"></script>
 
     <script type="module" src="./test-element.js"></script>
   </head>
@@ -23,363 +23,363 @@
     </test-fixture>
 
     <script type="module">
-suite('_headersStringToJSON()', () => {
-  let element;
-  setup(function() {
-    element = fixture('Basic');
-  });
-
-  test('Returns empty array when no input', () => {
-    const result = element._headersStringToJSON();
-    assert.typeOf(result, 'array');
-    assert.lengthOf(result, 0);
-  });
-
-  test('Returns empty array when empty input', () => {
-    const result = element._headersStringToJSON('');
-    assert.typeOf(result, 'array');
-    assert.lengthOf(result, 0);
-  });
-
-  test('Returns empty array when empty input after trim', () => {
-    const result = element._headersStringToJSON('   ');
-    assert.typeOf(result, 'array');
-    assert.lengthOf(result, 0);
-  });
-
-  test('Throws error when argument is not a string', () => {
-    assert.throws(() => {
-      element._headersStringToJSON({});
-    });
-  });
-
-  test('Parses single header', () => {
-    const inp = 'content-type: application/json';
-    const result = element._headersStringToJSON(inp);
-    assert.typeOf(result, 'array');
-    assert.lengthOf(result, 1);
-    assert.equal(result[0].name, 'content-type');
-    assert.equal(result[0].value, 'application/json');
-  });
-
-  test('Parses multiple headers', () => {
-    let inp = 'content-type: application/json\n';
-    inp += 'accept: */*\n';
-    inp += 'dnt: 1';
-    const result = element._headersStringToJSON(inp);
-    assert.typeOf(result, 'array');
-    assert.lengthOf(result, 3);
-    assert.equal(result[0].name, 'content-type');
-    assert.equal(result[0].value, 'application/json');
-
-    assert.equal(result[1].name, 'accept');
-    assert.equal(result[1].value, '*/*');
-
-    assert.equal(result[2].name, 'dnt');
-    assert.equal(result[2].value, '1');
-  });
-
-  test('Ignores empty lines', () => {
-    let inp = 'content-type: application/json\n';
-    inp += '\n';
-    inp += 'dnt: 1';
-    const result = element._headersStringToJSON(inp);
-    assert.typeOf(result, 'array');
-    assert.lengthOf(result, 2);
-  });
-
-  test('Accepts empty values', () => {
-    let inp = 'content-type:\n';
-    inp += '\n';
-    inp += 'dnt: 1';
-    const result = element._headersStringToJSON(inp);
-    assert.typeOf(result, 'array');
-    assert.lengthOf(result, 2);
-    assert.equal(result[0].value, '');
-  });
-
-  test('Accepts values with colon', () => {
-    let inp = 'content-type: {"test": "value"}';
-    const result = element._headersStringToJSON(inp);
-    assert.typeOf(result, 'array');
-    assert.lengthOf(result, 1);
-    assert.equal(result[0].value, '{"test": "value"}');
-  });
-});
-
-suite('_hedersToJSON()', () => {
-  let element;
-  setup(function() {
-    element = fixture('Basic');
-  });
-
-  test('Creates array with values', function() {
-    const headers = new Headers();
-    headers.append('x-test', 'value 1, value 2');
-    headers.append('Content-Type', 'application/json');
-    headers.append('x-test-2', 'v1');
-    headers.append('x-test-2', 'v2');
-
-    const ref = [{
-      name: 'x-test',
-      value: 'value 1, value 2'
-    }, {
-      name: 'content-type',
-      value: 'application/json'
-    }, {
-      name: 'x-test-2',
-      value: 'v1, v2'
-    }];
-
-    function findInRef(key) {
-      return ref.find(function(item) {
-        return item.name === key;
+    suite('_headersStringToJSON()', () => {
+      let element;
+      setup(function() {
+        element = fixture('Basic');
       });
-    }
 
-    const parsed = element._hedersToJSON(headers);
-    for (let i = 0, len = parsed.length; i < len; i++) {
-      const _ref = findInRef(parsed[i].name);
-      assert.equal(parsed[i].value, _ref.value, 'Contains value for ' + _ref.name + ' header');
-    }
-  });
-});
+      test('Returns empty array when no input', () => {
+        const result = element._headersStringToJSON();
+        assert.typeOf(result, 'array');
+        assert.lengthOf(result, 0);
+      });
 
-suite('headersToJSON()', () => {
-  let element;
-  setup(function() {
-    element = fixture('Basic');
-  });
+      test('Returns empty array when empty input', () => {
+        const result = element._headersStringToJSON('');
+        assert.typeOf(result, 'array');
+        assert.lengthOf(result, 0);
+      });
 
-  test('Parses string to array', function() {
-    const headers = 'x-test: value';
-    const result = element.headersToJSON(headers);
-    assert.typeOf(result, 'array');
-    assert.lengthOf(result, 1);
-    assert.equal(result[0].name, 'x-test');
-    assert.equal(result[0].value, 'value');
-  });
+      test('Returns empty array when empty input after trim', () => {
+        const result = element._headersStringToJSON('   ');
+        assert.typeOf(result, 'array');
+        assert.lengthOf(result, 0);
+      });
 
-  test('Pareses Headers to array', function() {
-    const headers = new Headers();
-    headers.append('x-test', 'value');
+      test('Throws error when argument is not a string', () => {
+        assert.throws(() => {
+          element._headersStringToJSON({});
+        });
+      });
 
-    const result = element.headersToJSON(headers);
-    assert.typeOf(result, 'array');
-    assert.lengthOf(result, 1);
-    assert.equal(result[0].name, 'x-test');
-    assert.equal(result[0].value, 'value');
-  });
+      test('Parses single header', () => {
+        const inp = 'content-type: application/json';
+        const result = element._headersStringToJSON(inp);
+        assert.typeOf(result, 'array');
+        assert.lengthOf(result, 1);
+        assert.equal(result[0].name, 'content-type');
+        assert.equal(result[0].value, 'application/json');
+      });
 
-  test('Pareses Object to array', function() {
-    const headers = {
-      'x-test': 'value'
-    };
-    const result = element.headersToJSON(headers);
-    assert.typeOf(result, 'array');
-    assert.lengthOf(result, 1);
-    assert.equal(result[0].name, 'x-test');
-    assert.equal(result[0].value, 'value');
-  });
+      test('Parses multiple headers', () => {
+        let inp = 'content-type: application/json\n';
+        inp += 'accept: */*\n';
+        inp += 'dnt: 1';
+        const result = element._headersStringToJSON(inp);
+        assert.typeOf(result, 'array');
+        assert.lengthOf(result, 3);
+        assert.equal(result[0].name, 'content-type');
+        assert.equal(result[0].value, 'application/json');
 
-  test('Should process multiline headers per rfc2616 sec4', function() {
-    let headers = 'x-test: value 1, value 2\n';
-    headers += 'x-test-2: v1\n\tv2\n';
-    headers += 'x-test-2: v3';
+        assert.equal(result[1].name, 'accept');
+        assert.equal(result[1].value, '*/*');
 
-    const parsed = element.headersToJSON(headers);
-    assert.lengthOf(parsed, 3, 'Result has 3 headers');
-    assert.equal(parsed[1].value, 'v1\n\tv2');
-  });
-});
+        assert.equal(result[2].name, 'dnt');
+        assert.equal(result[2].value, '1');
+      });
 
-suite('getContentType()', () => {
-  let element;
-  setup(function() {
-    element = fixture('Basic');
-  });
+      test('Ignores empty lines', () => {
+        let inp = 'content-type: application/json\n';
+        inp += '\n';
+        inp += 'dnt: 1';
+        const result = element._headersStringToJSON(inp);
+        assert.typeOf(result, 'array');
+        assert.lengthOf(result, 2);
+      });
 
-  test('Finds the Content-Type header', function() {
-    let headers = 'x-test: value 1, value 2\n';
-    headers += 'content-type: application/json\n';
-    headers += 'x-test-2: v1\n';
-    headers += 'x-test-2: v2';
+      test('Accepts empty values', () => {
+        let inp = 'content-type:\n';
+        inp += '\n';
+        inp += 'dnt: 1';
+        const result = element._headersStringToJSON(inp);
+        assert.typeOf(result, 'array');
+        assert.lengthOf(result, 2);
+        assert.equal(result[0].value, '');
+      });
 
-    const ct = element.getContentType(headers);
-    assert.equal(ct, 'application/json');
-  });
+      test('Accepts values with colon', () => {
+        let inp = 'content-type: {"test": "value"}';
+        const result = element._headersStringToJSON(inp);
+        assert.typeOf(result, 'array');
+        assert.lengthOf(result, 1);
+        assert.equal(result[0].value, '{"test": "value"}');
+      });
+    });
 
-  test('Finds the multipart Content-Type header', function() {
-    let headers = 'x-test: value 1, value 2\n';
-    headers += 'content-type: multipart/mixed; boundary=gc0p4Jq0M2Yt08jU534c0p\n';
-    headers += 'x-test-2: v1\n';
-    headers += 'x-test-2: v2';
+    suite('_hedersToJSON()', () => {
+      let element;
+      setup(function() {
+        element = fixture('Basic');
+      });
 
-    const ct = element.getContentType(headers);
-    assert.equal(ct, 'multipart/mixed; boundary=gc0p4Jq0M2Yt08jU534c0p');
-  });
+      test('Creates array with values', function() {
+        const headers = new Headers();
+        headers.append('x-test', 'value 1, value 2');
+        headers.append('Content-Type', 'application/json');
+        headers.append('x-test-2', 'v1');
+        headers.append('x-test-2', 'v2');
 
-  test('Finds the Content-Type header with extension', function() {
-    let headers = 'x-test: value 1, value 2\n';
-    headers += 'content-type: text/html; charset=ISO-8859-4\n';
-    headers += 'x-test-2: v1\n';
-    headers += 'x-test-2: v2';
+        const ref = [{
+          name: 'x-test',
+          value: 'value 1, value 2'
+        }, {
+          name: 'content-type',
+          value: 'application/json'
+        }, {
+          name: 'x-test-2',
+          value: 'v1, v2'
+        }];
 
-    const ct = element.getContentType(headers);
-    assert.equal(ct, 'text/html');
-  });
-});
+        function findInRef(key) {
+          return ref.find(function(item) {
+            return item.name === key;
+          });
+        }
 
-suite('replaceHeaderValue()', () => {
-  let element;
-  setup(function() {
-    element = fixture('Basic');
-  });
+        const parsed = element._hedersToJSON(headers);
+        for (let i = 0, len = parsed.length; i < len; i++) {
+          const _ref = findInRef(parsed[i].name);
+          assert.equal(parsed[i].value, _ref.value, 'Contains value for ' + _ref.name + ' header');
+        }
+      });
+    });
 
-  test('Replaces header value', function() {
-    let headers = 'x-test: value 1, value 2\n';
-    headers += 'content-type: text/html; charset=ISO-8859-4\n';
-    headers += 'x-test-2: v1\n';
-    headers += 'x-test-2: v2';
+    suite('headersToJSON()', () => {
+      let element;
+      setup(function() {
+        element = fixture('Basic');
+      });
 
-    headers = element.replaceHeaderValue(headers, 'content-type', 'application/json');
-    const match = headers.match(/^content-type: (.*)$/im);
-    assert.notEqual(match, null);
-    assert.equal(match[1], 'application/json');
-  });
+      test('Parses string to array', function() {
+        const headers = 'x-test: value';
+        const result = element.headersToJSON(headers);
+        assert.typeOf(result, 'array');
+        assert.lengthOf(result, 1);
+        assert.equal(result[0].name, 'x-test');
+        assert.equal(result[0].value, 'value');
+      });
 
-  test('Replaces header value in Headers object', function() {
-    const headers = new Headers();
-    headers.append('x-test', 'value');
-    const result = element.replaceHeaderValue(headers, 'x-test', 'replaced');
-    const newValue = result.get('x-test');
-    assert.equal(newValue, 'replaced');
-  });
+      test('Pareses Headers to array', function() {
+        const headers = new Headers();
+        headers.append('x-test', 'value');
 
-  test('Replaces header value in array', function() {
-    const headers = [{
-      name: 'x-test',
-      value: 'value'
-    }];
-    const result = element.replaceHeaderValue(headers, 'x-test', 'replaced');
-    const newValue = result[0].value;
-    assert.equal(newValue, 'replaced');
-  });
-});
+        const result = element.headersToJSON(headers);
+        assert.typeOf(result, 'array');
+        assert.lengthOf(result, 1);
+        assert.equal(result[0].name, 'x-test');
+        assert.equal(result[0].value, 'value');
+      });
 
-suite('filterHeaders()', () => {
-  let element;
-  setup(function() {
-    element = fixture('Basic');
-  });
+      test('Pareses Object to array', function() {
+        const headers = {
+          'x-test': 'value'
+        };
+        const result = element.headersToJSON(headers);
+        assert.typeOf(result, 'array');
+        assert.lengthOf(result, 1);
+        assert.equal(result[0].name, 'x-test');
+        assert.equal(result[0].value, 'value');
+      });
 
-  test('Should filter headers', function() {
-    const headers = [{
-      name: 'x-test',
-      value: 'value 1'
-    }, {
-      name: 'x-test',
-      value: 'value 2'
-    }, {
-      name: 'Content-Type',
-      value: 'application/json'
-    }];
-    const ref = [{
-      name: 'x-test',
-      value: 'value 1, value 2'
-    }, {
-      name: 'Content-Type',
-      value: 'application/json'
-    }];
-    const filtered = element.filterHeaders(headers);
-    assert.deepEqual(filtered, ref);
-  });
-});
+      test('Should process multiline headers per rfc2616 sec4', function() {
+        let headers = 'x-test: value 1, value 2\n';
+        headers += 'x-test-2: v1\n\tv2\n';
+        headers += 'x-test-2: v3';
 
-suite('headersToString()', () => {
-  let element;
-  setup(function() {
-    element = fixture('Basic');
-  });
+        const parsed = element.headersToJSON(headers);
+        assert.lengthOf(parsed, 3, 'Result has 3 headers');
+        assert.equal(parsed[1].value, 'v1\n\tv2');
+      });
+    });
 
-  test('Should parse headers array to string', function() {
-    const headers = [{
-      name: 'x-test',
-      value: 'value 1'
-    }, {
-      name: 'x-test',
-      value: 'value 2'
-    }, {
-      name: 'Content-Type',
-      value: 'application/json'
-    }];
-    let ref = 'x-test: value 1, value 2\n';
-    ref += 'Content-Type: application/json';
-    const parsed = element.headersToString(headers);
-    assert.equal(parsed, ref);
-  });
+    suite('getContentType()', () => {
+      let element;
+      setup(function() {
+        element = fixture('Basic');
+      });
 
-  test('Should parse Headers object to string', function() {
-    let headers = new Headers();
-    headers.append('x-test', 'value 1');
-    headers.append('x-test', 'value 2');
-    headers.append('Content-Type', 'application/json');
+      test('Finds the Content-Type header', function() {
+        let headers = 'x-test: value 1, value 2\n';
+        headers += 'content-type: application/json\n';
+        headers += 'x-test-2: v1\n';
+        headers += 'x-test-2: v2';
 
-    const parsed = element.headersToString(headers);
-    assert.ok(parsed.match(/content-type:\s?application\/json/gim), 'Contains content type');
-    assert.ok(parsed.match(/x-test:\s?value 1,\s?value 2/gim), 'Contains concatenated headers');
-  });
+        const ct = element.getContentType(headers);
+        assert.equal(ct, 'application/json');
+      });
 
-  test('Should parse string to string', function() {
-    let headers = 'x-test: value 1, value 2\n';
-    headers += 'content-type: application/json';
+      test('Finds the multipart Content-Type header', function() {
+        let headers = 'x-test: value 1, value 2\n';
+        headers += 'content-type: multipart/mixed; boundary=gc0p4Jq0M2Yt08jU534c0p\n';
+        headers += 'x-test-2: v1\n';
+        headers += 'x-test-2: v2';
 
-    let ref = 'x-test: value 1, value 2\n';
-    ref += 'content-type: application/json';
-    const parsed = element.headersToString(headers);
-    assert.equal(parsed, ref);
-  });
-});
+        const ct = element.getContentType(headers);
+        assert.equal(ct, 'multipart/mixed; boundary=gc0p4Jq0M2Yt08jU534c0p');
+      });
 
-suite('getHeaderError()', () => {
-  let element;
-  setup(function() {
-    element = fixture('Basic');
-  });
+      test('Finds the Content-Type header with extension', function() {
+        let headers = 'x-test: value 1, value 2\n';
+        headers += 'content-type: text/html; charset=ISO-8859-4\n';
+        headers += 'x-test-2: v1\n';
+        headers += 'x-test-2: v2';
 
-  test('Should not find error', function() {
-    let headers = 'x-test: value 1, value 2\n';
-    headers += 'content-type: text/html; charset=ISO-8859-4\n';
-    headers += 'x-test-2: v1\n';
-    headers += 'x-test-2: v2';
+        const ct = element.getContentType(headers);
+        assert.equal(ct, 'text/html');
+      });
+    });
 
-    const valid = element.getHeaderError(headers);
-    assert.equal(valid, null);
-  });
+    suite('replaceHeaderValue()', () => {
+      let element;
+      setup(function() {
+        element = fixture('Basic');
+      });
 
-  test('Should find empty value error', function() {
-    let headers = 'x-test: \n';
-    headers += 'content-type: text/html; charset=ISO-8859-4\n';
-    headers += 'x-test-2: v1\n';
-    headers += 'x-test-2: v2';
+      test('Replaces header value', function() {
+        let headers = 'x-test: value 1, value 2\n';
+        headers += 'content-type: text/html; charset=ISO-8859-4\n';
+        headers += 'x-test-2: v1\n';
+        headers += 'x-test-2: v2';
 
-    const valid = element.getHeaderError(headers);
-    assert.notEqual(valid, null);
-    assert.equal(valid, 'Header value should not be empty');
-  });
+        headers = element.replaceHeaderValue(headers, 'content-type', 'application/json');
+        const match = headers.match(/^content-type: (.*)$/im);
+        assert.notEqual(match, null);
+        assert.equal(match[1], 'application/json');
+      });
 
-  test('Should find no Content-Type error', function() {
-    let headers = 'x-test: value 1, value 2\n';
-    headers += 'x-test-2: v1\n';
-    headers += 'x-test-2: v2';
+      test('Replaces header value in Headers object', function() {
+        const headers = new Headers();
+        headers.append('x-test', 'value');
+        const result = element.replaceHeaderValue(headers, 'x-test', 'replaced');
+        const newValue = result.get('x-test');
+        assert.equal(newValue, 'replaced');
+      });
 
-    element.isPayload = true;
-    const valid = element.getHeaderError(headers);
-    assert.notEqual(valid, null);
-    assert.equal(valid, 'Content-Type header is not defined');
-  });
-});
-</script>
+      test('Replaces header value in array', function() {
+        const headers = [{
+          name: 'x-test',
+          value: 'value'
+        }];
+        const result = element.replaceHeaderValue(headers, 'x-test', 'replaced');
+        const newValue = result[0].value;
+        assert.equal(newValue, 'replaced');
+      });
+    });
+
+    suite('filterHeaders()', () => {
+      let element;
+      setup(function() {
+        element = fixture('Basic');
+      });
+
+      test('Should filter headers', function() {
+        const headers = [{
+          name: 'x-test',
+          value: 'value 1'
+        }, {
+          name: 'x-test',
+          value: 'value 2'
+        }, {
+          name: 'Content-Type',
+          value: 'application/json'
+        }];
+        const ref = [{
+          name: 'x-test',
+          value: 'value 1, value 2'
+        }, {
+          name: 'Content-Type',
+          value: 'application/json'
+        }];
+        const filtered = element.filterHeaders(headers);
+        assert.deepEqual(filtered, ref);
+      });
+    });
+
+    suite('headersToString()', () => {
+      let element;
+      setup(function() {
+        element = fixture('Basic');
+      });
+
+      test('Should parse headers array to string', function() {
+        const headers = [{
+          name: 'x-test',
+          value: 'value 1'
+        }, {
+          name: 'x-test',
+          value: 'value 2'
+        }, {
+          name: 'Content-Type',
+          value: 'application/json'
+        }];
+        let ref = 'x-test: value 1, value 2\n';
+        ref += 'Content-Type: application/json';
+        const parsed = element.headersToString(headers);
+        assert.equal(parsed, ref);
+      });
+
+      test('Should parse Headers object to string', function() {
+        let headers = new Headers();
+        headers.append('x-test', 'value 1');
+        headers.append('x-test', 'value 2');
+        headers.append('Content-Type', 'application/json');
+
+        const parsed = element.headersToString(headers);
+        assert.ok(parsed.match(/content-type:\s?application\/json/gim), 'Contains content type');
+        assert.ok(parsed.match(/x-test:\s?value 1,\s?value 2/gim), 'Contains concatenated headers');
+      });
+
+      test('Should parse string to string', function() {
+        let headers = 'x-test: value 1, value 2\n';
+        headers += 'content-type: application/json';
+
+        let ref = 'x-test: value 1, value 2\n';
+        ref += 'content-type: application/json';
+        const parsed = element.headersToString(headers);
+        assert.equal(parsed, ref);
+      });
+    });
+
+    suite('getHeaderError()', () => {
+      let element;
+      setup(function() {
+        element = fixture('Basic');
+      });
+
+      test('Should not find error', function() {
+        let headers = 'x-test: value 1, value 2\n';
+        headers += 'content-type: text/html; charset=ISO-8859-4\n';
+        headers += 'x-test-2: v1\n';
+        headers += 'x-test-2: v2';
+
+        const valid = element.getHeaderError(headers);
+        assert.equal(valid, null);
+      });
+
+      test('Should find empty value error', function() {
+        let headers = 'x-test: \n';
+        headers += 'content-type: text/html; charset=ISO-8859-4\n';
+        headers += 'x-test-2: v1\n';
+        headers += 'x-test-2: v2';
+
+        const valid = element.getHeaderError(headers);
+        assert.notEqual(valid, null);
+        assert.equal(valid, 'Header value should not be empty');
+      });
+
+      test('Should find no Content-Type error', function() {
+        let headers = 'x-test: value 1, value 2\n';
+        headers += 'x-test-2: v1\n';
+        headers += 'x-test-2: v2';
+
+        element.isPayload = true;
+        const valid = element.getHeaderError(headers);
+        assert.notEqual(valid, null);
+        assert.equal(valid, 'Content-Type header is not defined');
+      });
+    });
+  </script>
 
   </body>
 </html>
