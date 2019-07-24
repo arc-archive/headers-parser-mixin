@@ -1,6 +1,6 @@
-import {PolymerElement} from '../../../@polymer/polymer/polymer-element.js';
-import {HeadersParserMixin} from '../headers-parser-mixin.js';
-import {html} from '../../../@polymer/polymer/lib/utils/html-tag.js';
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { HeadersParserMixin } from '../headers-parser-mixin.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 class TestElement extends HeadersParserMixin(PolymerElement) {
   static get template() {
     return html`
@@ -8,8 +8,7 @@ class TestElement extends HeadersParserMixin(PolymerElement) {
       :host {
         display: block;
       }
-    </style>
-`;
+    </style>`;
   }
 
   static get is() {
