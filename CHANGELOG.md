@@ -133,3 +133,47 @@
 
 
 
+<a name="3.0.1"></a>
+## 3.0.1 (2020-03-01)
+
+### Build
+
+* bumping version [3bcbe59](https://github.com/advanced-rest-client/headers-parser-mixin/commit/3bcbe597c547f4dfdc61cdb62bcce8dc6dbfe9d2) by Pawel Psztyc
+
+
+### Continuous integration
+
+* updating travis configuration [20b6b8c](https://github.com/advanced-rest-client/headers-parser-mixin/commit/20b6b8cb32be8e2a10f5ae3529f7afd0afb05dfb) by Pawel Psztyc
+
+
+### Update
+
+* removing namespace from types [1e3e191](https://github.com/advanced-rest-client/headers-parser-mixin/commit/1e3e1911cf931be15c988afb8db2c15ea5093c7c) by Pawel Psztyc
+* upgrading dependencies [1396b02](https://github.com/advanced-rest-client/headers-parser-mixin/commit/1396b024d2bd70beaf98ba09bad1f189954b4f3b) by Pawel Psztyc
+* upgrading dependencies to fix audit errors [64ecfa2](https://github.com/advanced-rest-client/headers-parser-mixin/commit/64ecfa2bea5a23222b49408dd1051791bb7e5fda) by Pawel Psztyc
+
+
+### Refactor
+
+* upgrading component to latest ARC standards [4aaa4c1](https://github.com/advanced-rest-client/headers-parser-mixin/commit/4aaa4c1128e72fc99b00c533a751c7d8073544b4) by Pawel
+
+
+### Testing
+
+* updating tests configuration [8c1031b](https://github.com/advanced-rest-client/headers-parser-mixin/commit/8c1031b824dfa7595d07f9eea5dcd55cc0ad02ba) by Pawel Psztyc
+
+
+### Other
+
+* Update: Updating import path to match web spec
+ [378f134](https://github.com/advanced-rest-client/headers-parser-mixin/commit/378f1344ff0be1c4fd75a04e4855726610eb235f) by Pawel Psztyc
+* Update: Updating tests configuration
+ [0a19690](https://github.com/advanced-rest-client/headers-parser-mixin/commit/0a19690de7bf6c4d87a14d747cd5d4d52400dc0d) by Pawel Psztyc
+* New: Adding npm ignore file
+ [0ec0ac2](https://github.com/advanced-rest-client/headers-parser-mixin/commit/0ec0ac2d2982e6ae457f6ce58eb238e5271a0609) by Pawel Psztyc
+* Update: Updating import paths
+ [772e615](https://github.com/advanced-rest-client/headers-parser-mixin/commit/772e615b2ac4525dda6ec226a0d4e0cf6abc2baa) by Pawel
+* Update: Updated Travis configuration to connect to Sauce Labs.
+ [7570bc5](https://github.com/advanced-rest-client/headers-parser-mixin/commit/7570bc5a82805b909467e7449ccf7fe2e5b67d0c) by Pawel
+
+
