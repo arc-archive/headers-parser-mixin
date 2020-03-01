@@ -26,20 +26,20 @@
     "url": "https://github.com/advanced-rest-client/headers-parser-mixin/issues"
   },
   "dependencies": {
-    "@polymer/polymer": "^3.0.0"
+    "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
-    "@advanced-rest-client/eslint-config": "^1.1.2",
-    "@advanced-rest-client/testing-karma-sl": "^1.0.4",
-    "@commitlint/cli": "^8.1.0",
-    "@commitlint/config-conventional": "^7.0.0",
-    "@open-wc/prettier-config": "^0.1.0",
-    "@open-wc/testing": "^0.11.1",
-    "@open-wc/testing-karma": "^2.0.6",
+    "@advanced-rest-client/eslint-config": "^1.1.4",
+    "@advanced-rest-client/testing-karma-sl": "^1.2.0",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@open-wc/prettier-config": "^0.1.14",
+    "@open-wc/testing": "^2.5.4",
+    "@open-wc/testing-karma": "^3.3.0",
     "@polymer/gen-typescript-declarations": "^1.6.2",
-    "es-dev-server": "^1.17.1",
-    "husky": "^1.0.0",
-    "lint-staged": "^8.0.0",
+    "es-dev-server": "^1.41.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
     "lit-html": "^1.1.2",
     "webpack-merge": "^4.2.2"
   },
