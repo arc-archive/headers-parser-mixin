@@ -31,7 +31,6 @@ const ERROR_MESSAGES = {
  *
  * @polymer
  * @mixinFunction
- * @memberof ArcMixins
  */
 export const HeadersParserMixin = dedupingMixin((base) => {
   /**
