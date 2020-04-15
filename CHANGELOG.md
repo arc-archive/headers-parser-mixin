@@ -177,3 +177,40 @@
  [7570bc5](https://github.com/advanced-rest-client/headers-parser-mixin/commit/7570bc5a82805b909467e7449ccf7fe2e5b67d0c) by Pawel
 
 
+<a name="3.1.0"></a>
+## [3.1.0](https://github.com/advanced-rest-client/headers-parser-mixin/compare/3.0.0...3.1.0) (2020-04-15)
+
+### Build
+
+* bumping version [68d009a](https://github.com/advanced-rest-client/headers-parser-mixin/commit/68d009a5485eb2b7cdf5fd9b0c60ffa7a13d9624) by Pawel
+* bumping version [3bcbe59](https://github.com/advanced-rest-client/headers-parser-mixin/commit/3bcbe597c547f4dfdc61cdb62bcce8dc6dbfe9d2) by Pawel Psztyc
+
+
+### Continuous integration
+
+* updating travis configuration [20b6b8c](https://github.com/advanced-rest-client/headers-parser-mixin/commit/20b6b8cb32be8e2a10f5ae3529f7afd0afb05dfb) by Pawel Psztyc
+
+
+### Update
+
+* adding tests for plain object [bc75053](https://github.com/advanced-rest-client/headers-parser-mixin/commit/bc75053abcac03574a30015e8d9208395e8d6fa8) by Pawel
+* updating types [4d81e72](https://github.com/advanced-rest-client/headers-parser-mixin/commit/4d81e725df69e5278fa716a1b6b2f1664f7c4f85) by Pawel
+* removing unused metadata [5ba2436](https://github.com/advanced-rest-client/headers-parser-mixin/commit/5ba24365541cc576ddb266a04ef92eaeb47069cb) by Pawel
+* removing Polymer dependency [fb922fa](https://github.com/advanced-rest-client/headers-parser-mixin/commit/fb922fa65f959f58dd24874e52ced0999440caa1) by Pawel
+* upgrading dependencies [3a3ad66](https://github.com/advanced-rest-client/headers-parser-mixin/commit/3a3ad6677e16038356f8d3fd2d7f9df0fe17ea3d) by Pawel
+* [ci skip] automated merge master->stage. syncing main branches [22729a9](https://github.com/advanced-rest-client/headers-parser-mixin/commit/22729a971056b64a62bdfc0b134a5f66cc3a0196) by Ci agent
+* removing namespace from types [1e3e191](https://github.com/advanced-rest-client/headers-parser-mixin/commit/1e3e1911cf931be15c988afb8db2c15ea5093c7c) by Pawel Psztyc
+* upgrading dependencies [1396b02](https://github.com/advanced-rest-client/headers-parser-mixin/commit/1396b024d2bd70beaf98ba09bad1f189954b4f3b) by Pawel Psztyc
+* upgrading dependencies to fix audit errors [64ecfa2](https://github.com/advanced-rest-client/headers-parser-mixin/commit/64ecfa2bea5a23222b49408dd1051791bb7e5fda) by Pawel Psztyc
+
+
+### Refactor
+
+* moving sources to the src/ folder [1a62547](https://github.com/advanced-rest-client/headers-parser-mixin/commit/1a62547e3bbc5ba4f43bf5a8dc966b4cf9d4aac4) by Pawel
+
+
+### Testing
+
+* updating tests configuration [8c1031b](https://github.com/advanced-rest-client/headers-parser-mixin/commit/8c1031b824dfa7595d07f9eea5dcd55cc0ad02ba) by Pawel Psztyc
+
+
