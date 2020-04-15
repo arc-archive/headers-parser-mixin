@@ -6,7 +6,7 @@
 
 ## headers-parser-mixin
 
-Headers parser Polymer Mixin to be implemented with elements that needs to parse headers data.
+Headers parser mixin function to be implemented with elements that parses HTTP headers.
 
 ## Usage
 
@@ -19,7 +19,7 @@ npm install --save @advanced-rest-client/headers-parser-mixin
 
 ```js
 import { LitElement, html } from 'lit-element';
-import { HeadersParserMixin } from '@advanced-rest-client/headers-parser-mixin/headers-parser-mixin.js';
+import { HeadersParserMixin } from '@advanced-rest-client/headers-parser-mixin';
 
 class SampleElement extends HeadersParserMixin(LitElement) {
   render() {
@@ -36,7 +36,7 @@ customElements.define('sample-element', SampleElement);
 
 ```js
 import { PolymerElement, html } from '@polymer/polymer';
-import { HeadersParserMixin } from '@advanced-rest-client/headers-parser-mixin/headers-parser-mixin.js';
+import { HeadersParserMixin } from '@advanced-rest-client/headers-parser-mixin';
 
 class SampleElement extends HeadersParserMixin(PolymerElement) {
   static get template() {
@@ -76,7 +76,3 @@ npm start
 ```sh
 npm test
 ```
-
-### API components
-
-This components is a part of API [components ecosystem](https://elements.advancedrestclient.com/)

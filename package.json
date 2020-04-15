@@ -3,7 +3,8 @@
   "description": "Headers parser Polymer Mixin to be implemented to elements that needs to parse headers data",
   "version": "3.0.1",
   "license": "Apache-2.0",
-  "main": "headers-parser-mixin.js",
+  "main": "index.js",
+  "module": "index.js",
   "keywords": [
     "web-components",
     "headers-parser",
