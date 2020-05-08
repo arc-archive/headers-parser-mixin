@@ -1,6 +1,6 @@
 [![Published on NPM](https://img.shields.io/npm/v/@advanced-rest-client/headers-parser-mixin.svg)](https://www.npmjs.com/package/@advanced-rest-client/headers-parser-mixin)
 
-[![Build Status](https://travis-ci.org/advanced-rest-client/headers-parser-mixin.svg?branch=stage)](https://travis-ci.org/advanced-rest-client/headers-parser-mixin)
+[![Build Status](https://travis-ci.com/advanced-rest-client/headers-parser-mixin.svg)](https://travis-ci.com/advanced-rest-client/headers-parser-mixin)
 
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/advanced-rest-client/headers-parser-mixin)
 
@@ -8,11 +8,22 @@
 
 Headers parser mixin function to be implemented with elements that parses HTTP headers.
 
+## Mixin deprecation notice
+
+The mixing is being deprecated and implementation should move to use `HeadersParser` module instead.
+
 ## Usage
 
 ### Installation
 ```
 npm install --save @advanced-rest-client/headers-parser-mixin
+```
+
+### As ES module
+
+```js
+import * as HeadersParser from '@advanced-rest-client/headers-parser-mixin';
+const errorMessage = HeadersParser.getError('Whitespace Name: x-true');
 ```
 
 ### In a LitElement
@@ -27,31 +38,6 @@ class SampleElement extends HeadersParserMixin(LitElement) {
     return html`
     ${validation ? html`<p>${validation}<p>` : html`<p>Headers are valid</p>`}
     `;
-  }
-}
-customElements.define('sample-element', SampleElement);
-```
-
-### In a Polymer 3 element
-
-```js
-import { PolymerElement, html } from '@polymer/polymer';
-import { HeadersParserMixin } from '@advanced-rest-client/headers-parser-mixin';
-
-class SampleElement extends HeadersParserMixin(PolymerElement) {
-  static get template() {
-    return html`
-    <template is="dom-if" if="[[validation]]">
-      <p>${validation}<p>
-    </template>
-    <template is="dom-if" if="[[!validation]]">
-      <p>Headers are valid</p>
-    </template>
-    `;
-  }
-
-  _processHeaders(value) {
-    this.validation = this.getHeaderError(value);
   }
 }
 customElements.define('sample-element', SampleElement);
