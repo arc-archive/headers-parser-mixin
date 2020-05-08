@@ -214,3 +214,29 @@
 * updating tests configuration [8c1031b](https://github.com/advanced-rest-client/headers-parser-mixin/commit/8c1031b824dfa7595d07f9eea5dcd55cc0ad02ba) by Pawel Psztyc
 
 
+<a name="3.2.0"></a>
+## [3.2.0](https://github.com/advanced-rest-client/headers-parser-mixin/compare/3.0.1...3.2.0) (2020-05-08)
+
+### Build
+
+* bumping version [f8a74b6](https://github.com/advanced-rest-client/headers-parser-mixin/commit/f8a74b62ae3a911f38d31e266f0d50dcf6bb085f) by Pawel
+* bumping version [68d009a](https://github.com/advanced-rest-client/headers-parser-mixin/commit/68d009a5485eb2b7cdf5fd9b0c60ffa7a13d9624) by Pawel
+
+
+### Update
+
+* [ci skip] automated merge master->stage. syncing main branches [83cc6c2](https://github.com/advanced-rest-client/headers-parser-mixin/commit/83cc6c2eb1f283c2b7c8173fea61478f400aa400) by Ci agent
+* adding tests for plain object [bc75053](https://github.com/advanced-rest-client/headers-parser-mixin/commit/bc75053abcac03574a30015e8d9208395e8d6fa8) by Pawel
+* updating types [4d81e72](https://github.com/advanced-rest-client/headers-parser-mixin/commit/4d81e725df69e5278fa716a1b6b2f1664f7c4f85) by Pawel
+* removing unused metadata [5ba2436](https://github.com/advanced-rest-client/headers-parser-mixin/commit/5ba24365541cc576ddb266a04ef92eaeb47069cb) by Pawel
+* removing Polymer dependency [fb922fa](https://github.com/advanced-rest-client/headers-parser-mixin/commit/fb922fa65f959f58dd24874e52ced0999440caa1) by Pawel
+* upgrading dependencies [3a3ad66](https://github.com/advanced-rest-client/headers-parser-mixin/commit/3a3ad6677e16038356f8d3fd2d7f9df0fe17ea3d) by Pawel
+* [ci skip] automated merge master->stage. syncing main branches [22729a9](https://github.com/advanced-rest-client/headers-parser-mixin/commit/22729a971056b64a62bdfc0b134a5f66cc3a0196) by Ci agent
+
+
+### Refactor
+
+* moving mixin to a module implementation [1e76564](https://github.com/advanced-rest-client/headers-parser-mixin/commit/1e76564f8199f5ce6d2a39c02c63f68b300e9c8c) by Pawel
+* moving sources to the src/ folder [1a62547](https://github.com/advanced-rest-client/headers-parser-mixin/commit/1a62547e3bbc5ba4f43bf5a8dc966b4cf9d4aac4) by Pawel
+
+
